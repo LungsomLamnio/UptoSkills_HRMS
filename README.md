@@ -16,3 +16,9 @@ To create a scalable, user-friendly, and efficient HRMS platform that simplifies
 ---
 
 🔧 Work in progress...
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
