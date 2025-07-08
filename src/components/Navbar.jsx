@@ -16,10 +16,11 @@ const items = [
 
 const Navbar = () => {
   return (
-    <div
-      className="sidebar d-flex flex-column text-white bg-primary vh-100 p-3"
-      style={{ width: "250px" }}
-    >
+<div
+  className="sidebar d-flex flex-column text-white vh-100 p-3"
+  style={{ width: "250px", backgroundColor: "#697CE8" }}
+>
+
       <div className="text-center mb-4">
         <img
           src={logo}
@@ -28,34 +29,38 @@ const Navbar = () => {
           style={{ width: "200px" }}
         />
         <br />
-        <div>
+        <div className="d-flex align-items-center">
           <img
             src={profile}
             alt="Profile"
-            className="rounded-circle mb-2"
+            className="rounded-circle me-3"
             style={{ width: "60px", height: "60px", objectFit: "cover" }}
           />
-          <h6 className="fw-bold mb-0">Maria</h6>
-          <small>HR Manager</small>
+          <div>
+            <h6 className="fw-bold mb-1">Maria</h6>
+            <small>HR Manager</small>
+          </div>
         </div>
       </div>
 
-      <div className="nav-links mt-3">
-        {items.map((item) => (
-          <NavLink
-            to={item.path}
-            key={item.name}
-            className={({ isActive }) =>
-              `py-2 px-3 mb-1 rounded d-flex align-items-center text-decoration-none ${
-                isActive ? "bg-light text-dark fw-bold" : "text-white"
-              }`
-            }
-          >
-            <i className={`bi ${item.icon} me-2`}></i>
-            {item.name}
-          </NavLink>
-        ))}
-      </div>
+<div className="nav-links mt-3">
+  {items.map((item) => (
+    <NavLink
+      to={item.path}
+      key={item.name}
+      className={({ isActive }) =>
+        `py-2 px-3 rounded d-flex align-items-center text-decoration-none ${
+          isActive ? "bg-light text-dark fw-bold" : "text-white"
+        }`
+      }
+      style={{ marginBottom: "30px" }}
+    >
+      <i className={`bi ${item.icon} me-2`}></i>
+      {item.name}
+    </NavLink>
+  ))}
+</div>
+
     </div>
   );
 };
