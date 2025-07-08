@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Events.css";
 
-const Calendar = () => {
+export default function Calendar() {
     const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
     const dates = Array.from({ length: 30 }, (_, i) => i + 1);
 
@@ -19,16 +19,11 @@ const Calendar = () => {
             <div className="calendar-dates">
                 {dates.map((date) => {
                     let className = "calendar-date";
-                    if ([17, 23, 24, 29, 30].includes(date)) {
-                        className += " selected";
-                    } else if ([25, 26].includes(date)) {
-                        className += " partial";
-                    }
+                    if ([17, 23, 24, 29, 30].includes(date)) className += " selected";
+                    else if ([25, 26].includes(date)) className += " partial";
                     return <button key={date} className={className}>{date}</button>;
                 })}
             </div>
         </div>
     );
-};
-
-export default Calendar;
+}

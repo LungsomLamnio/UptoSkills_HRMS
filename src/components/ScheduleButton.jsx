@@ -1,8 +1,6 @@
 import React from "react";
 import "../styles/Events.css";
 
-const ScheduleButton = () => (
-    <button className="schedule-btn">Schedule New Event</button>
-);
-
-export default ScheduleButton;
+export default function ScheduleButton() {
+    return <button className="schedule-btn">Schedule New Event</button>;
+}
