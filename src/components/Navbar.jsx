@@ -1,44 +1,59 @@
-import React from 'react';
-import profile from '../assets/1000065735.jpg';
-import logo from '../assets/logo.jpeg'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import profile from "../assets/1000065735.jpg";
+import logo from "../assets/logo.png";
+
+const items = [
+  { name: "Dashboard", icon: "bi-speedometer2", path: "/" },
+  { name: "Chat", icon: "bi-chat-dots", path: "/chat" },
+  { name: "Employees", icon: "bi-people", path: "/employees" },
+  { name: "Feed", icon: "bi-newspaper", path: "/feed" },
+  { name: "Recognition", icon: "bi-award", path: "/recognition" },
+  { name: "Event", icon: "bi-calendar-event", path: "/event" },
+  { name: "Profile", icon: "bi-person", path: "/profile" },
+  { name: "Settings", icon: "bi-gear", path: "/settings" },
+];
 
 const Navbar = () => {
-  const items = [
-    { name: 'Dashboard', icon: 'bi-speedometer2' },
-    { name: 'Chat', icon: 'bi-chat-dots' },
-    { name: 'Employees', icon: 'bi-people' },
-    { name: 'Feed', icon: 'bi-newspaper' },
-    { name: 'Recognition', icon: 'bi-award' },
-    { name: 'Event', icon: 'bi-calendar-event' },
-    { name: 'Profile', icon: 'bi-person' },
-    { name: 'Settings', icon: 'bi-gear' }
-  ];
-
   return (
-    <div className="sidebar d-flex flex-column text-white bg-primary vh-100 p-3" style={{ width: '250px' }}>
+    <div
+      className="sidebar d-flex flex-column text-white bg-primary vh-100 p-3"
+      style={{ width: "250px" }}
+    >
       <div className="text-center mb-4">
-        <img src={logo} alt="HRMS Logo" className="mb-3" style={{ width: '100px' }} />
-        <br />
         <img
-          src={profile}
-          alt="Profile"
-          className="rounded-circle mb-2"
-          style={{ width: '60px', height: '60px', objectFit: 'cover' }}
+          src={logo}
+          alt="HRMS Logo"
+          className="mb-3"
+          style={{ width: "200px" }}
         />
-        <h6 className="fw-bold mb-0">Maria</h6>
-        <small>HR Manager</small>
+        <br />
+        <div>
+          <img
+            src={profile}
+            alt="Profile"
+            className="rounded-circle mb-2"
+            style={{ width: "60px", height: "60px", objectFit: "cover" }}
+          />
+          <h6 className="fw-bold mb-0">Maria</h6>
+          <small>HR Manager</small>
+        </div>
       </div>
 
       <div className="nav-links mt-3">
         {items.map((item) => (
-          <div
+          <NavLink
+            to={item.path}
             key={item.name}
-            className={`py-2 px-3 mb-1 rounded d-flex align-items-center ${item.name === 'Event' ? 'bg-light text-dark fw-bold' : 'text-white'}`}
-            style={{ cursor: 'pointer' }}
+            className={({ isActive }) =>
+              `py-2 px-3 mb-1 rounded d-flex align-items-center text-decoration-none ${
+                isActive ? "bg-light text-dark fw-bold" : "text-white"
+              }`
+            }
           >
             <i className={`bi ${item.icon} me-2`}></i>
             {item.name}
-          </div>
+          </NavLink>
         ))}
       </div>
     </div>
