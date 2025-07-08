@@ -1,7 +1,7 @@
 /* Sidebar styles */
 .sidebar {
     width: 250px;
-    background: #67a2e1;
+    background: #6A7ADA;
     color: white;
     padding: 20px;
     height: 100vh;
@@ -48,7 +48,8 @@
 }
 
 .nav a:hover {
-    background: #2a2a3f;
+    background: #d3d3ff;
+    color: #6A7ADA;
 }
 
 .event-link {
