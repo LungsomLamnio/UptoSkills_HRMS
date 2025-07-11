@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import profile from "../assets/1000065735.jpg";
+import profile from "../assets/client.jpg";
 import logo from "../assets/logo.png";
 
 const items = [

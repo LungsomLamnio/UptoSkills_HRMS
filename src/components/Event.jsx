@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import profile1 from "../assets/1000065735.jpg";
-import profile2 from "../assets/1000065740.jpg";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import profile1 from "../assets/client.jpg";
+import profile2 from "../assets/EventO.png";
+import "./Event.css"; // Custom styles
 
-const Board = () => {
+const Event = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -66,9 +67,7 @@ const Board = () => {
                       <li>🌍 Asia/Kolkata</li>
                     </ul>
                     <div className="d-flex justify-content-center">
-                      <button className="btn btn-primary px-4">
-                        Join Event
-                      </button>
+                      <button className="btn btn-primary px-4">Join Event</button>
                     </div>
                   </div>
                 </div>
@@ -77,20 +76,21 @@ const Board = () => {
 
             {/* RIGHT SIDE - Calendar & Time Slots */}
             <div className="col-md-6">
-              <div className="d-flex justify-content-between align-items-start gap-4">
+              <div className="d-flex justify-content-between align-items-start gap-4 flex-wrap">
                 {/* Calendar */}
                 <div style={{ flex: 1 }}>
                   <h5 className="mb-3 fw-bold">Select a Date & Time</h5>
-                  <div className="bg-white p-3 rounded shadow-sm border mb-3">
+                  <div
+                    className="bg-white p-3 rounded shadow-sm border mb-3"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
                     <Calendar
                       onChange={(date) => setSelectedDate(date)}
                       value={selectedDate}
                     />
-                    <p className="mt-3 mb-0 fw-semibold">Time zone</p>
-                    <small className="text-muted">
-                      🌍 Asia/Kolkata (Local time)
-                    </small>
                   </div>
+                  <p className="mt-3 mb-0 fw-semibold">Time zone</p>
+                  <small className="text-muted">🌍 Asia/Kolkata (Local time)</small>
                 </div>
 
                 {/* Time Buttons */}
@@ -117,7 +117,10 @@ const Board = () => {
               </div>
 
               <div className="text-center mt-4">
-                <button className="btn btn-primary px-4 py-2 fw-bold" onClick={handleNext}>
+                <button
+                  className="btn btn-primary px-4 py-2 fw-bold"
+                  onClick={handleNext}
+                >
                   Schedule New Event
                 </button>
               </div>
@@ -180,4 +183,4 @@ const Board = () => {
   );
 };
 
-export default Board;
+export default Event;
