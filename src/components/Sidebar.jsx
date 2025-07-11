@@ -1,39 +1,61 @@
-import React from "react";
 import "../styles/Events.css";
+import Photo from "../assets/Photo.jpg";
+import Logo from "../assets/HRMS_Logo.png";
+import { useState } from "react";
+
+import { BiSolidDashboard } from "react-icons/bi";
+import { BsChatDotsFill } from "react-icons/bs";
+import {
+  FaUsers,
+  FaRegNewspaper,
+  FaAward,
+  FaUser,
+  FaCog,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 export default function Sidebar() {
-    return (
-        <aside className="sidebar">
-            <div className="logo">
-                <img
-                    src="src/assets/logo.png"
-                    alt="HRMS Logo"
-                    width="120"
-                    height="40"
-                />
-                <p>Human Resource Management System</p>
-            </div>
+  const [activeItems, setActiveItems] = useState("Event");
 
-            <div className="profile">
-                <img
-                    src="https://storage.googleapis.com/a1aa/image/aeb1d5e8-4139-48d5-8940-c819aac76a66.jpg"
-                    alt="Maria"
-                    className="profile-img"
-                />
-                <p className="name">Maria</p>
-                <p className="role">HR Manager</p>
-            </div>
+  const menuItems = [
+    { label: "Dashboard", icon: <BiSolidDashboard /> },
+    { label: "Chat", icon: <BsChatDotsFill /> },
+    { label: "Employees", icon: <FaUsers /> },
+    { label: "Feed", icon: <FaRegNewspaper /> },
+    { label: "Recognition", icon: <FaAward /> },
+    { label: "Event", icon: <FaCalendarAlt /> },
+    { label: "Profile", icon: <FaUser /> },
+    { label: "Settings", icon: <FaCog /> },
+  ];
 
-            <nav className="nav bottom">
-                <a href="/"><i className="fas fa-th-large"></i> <span>Dashboard</span></a>
-                <a href="/"><i className="fas fa-comments"></i> <span>Chat</span></a>
-                <a href="/"><i className="fas fa-id-card-alt"></i> <span>Employees</span></a>
-                <a href="/"><i className="fas fa-rss"></i> <span>Feed</span></a>
-                <a href="/"><i className="fas fa-trophy"></i> <span>Recognition</span></a>
-                <a href="/"><i className="fas fa-calendar-alt"></i> <span>Event</span></a>
-                <a href="/"><i className="fas fa-user"></i> <span>Profile</span></a>
-                <a href="/"><i className="fas fa-cog"></i> <span>Settings</span></a>
-            </nav>
-        </aside>
-    );
+  return (
+    <div className="sidebar">
+      <div className="logo-container">
+        <img src={Logo} alt="website-logo" id="hrms-logo" />
+      </div>
+      <div className="profile text-center d-flex">
+        <img src={Photo} alt="profile-photo" id="profile-photo" />
+        <div className="profile-details text-white">
+          <h5>Lungsom</h5>
+          <p>HR Manager</p>
+        </div>
+      </div>
+      <div className="list">
+        <nav>
+          <ul className="text-white p-0 m-0">
+            {menuItems.map((item, index) => (
+              <li
+                key={index}
+                onClick={() => setActiveItems(item.label)}
+                className={activeItems === item.label ? "active-li" : ""}
+              >
+                <span className="icons">{item.icon}</span>
+                {item.label}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
 }
